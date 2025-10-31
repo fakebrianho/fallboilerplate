@@ -1,6 +1,4 @@
-//IMPORT THREE.JS SO WE CAN ACCESS IT
 import * as THREE from 'three'
-//IMPORT OUR ADD DEFAULT MESHES FUNCTION FROM OUR EXTERNAL JS FILE
 import { addDefaultMeshes } from './addDefaultMeshes'
 
 //SET UP OUR ESSENTIALS SCENE, CAMERA, RENDERER
@@ -31,22 +29,22 @@ function init() {
 	renderer.setSize(window.innerWidth, window.innerHeight)
 	document.body.appendChild(renderer.domElement)
 
-	//WE WILL ADD ANY AND ALL 3D MESHES TO OUR GLOBAL MESHES OBJECT HERE
+	//add our meshes into our container then add to scene
 	meshes.default = addDefaultMeshes()
 	meshes.copy = addDefaultMeshes()
 	meshes.copy2 = addDefaultMeshes()
 
-	//HERE WE'LL ADD EACH OBJECT TO OUR SCENE AS WELL
+	meshes.copy.position.x = 2
+	meshes.copy2.position.x = -2
+	//add to scene
 	scene.add(meshes.default)
 	scene.add(meshes.copy)
 	scene.add(meshes.copy2)
 
-	//START OUR ANIMATION LOOP
 	animate()
 }
 
 function animate() {
-	//EVERY FRAME WE UPDATE THE POSITION OF OUR meshes.default, meshes.copy, meshes.copy2
 	meshes.default.position.x = Math.sin(clock.getElapsedTime())
 	meshes.default.position.y = Math.cos(clock.getElapsedTime())
 
@@ -56,9 +54,7 @@ function animate() {
 	meshes.copy2.position.x = Math.sin(clock.getElapsedTime() * 2) * 2.5
 	meshes.copy2.position.y = Math.cos(clock.getElapsedTime() * 2) * 2.5
 
-	//RE-START THE LOOP
+	// meshes.default.scale.z -= 0.1
 	requestAnimationFrame(animate)
-
-	//RENDER OUR SCENE VIA CAMERA VIEW TO SCREEN
 	renderer.render(scene, camera)
 }
