@@ -16,6 +16,5 @@ export const addStandardMesh = ({ xPos = 0, yPos = 0, zPos = 0 } = {}) => {
 		color: 0xff00ff,
 	})
 	const mesh = new THREE.Mesh(geometry, material)
-	mesh.position.set(xPos, yPos, zPos)
 	return mesh
 }

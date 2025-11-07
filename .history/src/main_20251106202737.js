@@ -22,7 +22,6 @@ camera.position.set(0, 0, 5)
 
 //CREATE A GLOBALLY ACCESSIBLE OBJECT TO HOLD ONTO ALL OF OUR MESHES
 const meshes = {}
-const lights = {}
 
 const clock = new THREE.Clock()
 
@@ -36,17 +35,13 @@ function init() {
 
 	//WE WILL ADD ANY AND ALL 3D MESHES TO OUR GLOBAL MESHES OBJECT HERE
 	meshes.default = addDefaultMeshes({ xPos: -2 })
-
+	d
 	meshes.standard = addStandardMesh({ xPos: 2 })
-
-	//Lights
-	lights.default = addLight()
 
 	//HERE WE'LL ADD EACH OBJECT TO OUR SCENE AS WELL
 	scene.add(meshes.default)
-
+	d
 	scene.add(meshes.standard)
-	scene.add(lights.default)
 
 	//START OUR ANIMATION LOOP
 	animate()
@@ -54,10 +49,7 @@ function init() {
 
 function animate() {
 	//EVERY FRAME WE UPDATE THE POSITION OF OUR meshes.default, meshes.copy, meshes.copy2
-	meshes.standard.rotation.x += 0.01
-	meshes.standard.rotation.y += 0.01
-	meshes.default.rotation.x -= 0.01
-	meshes.default.rotation.y -= 0.02
+
 	//RE-START THE LOOP
 	requestAnimationFrame(animate)
 

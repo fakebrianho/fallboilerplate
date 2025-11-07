@@ -54,10 +54,7 @@ function init() {
 
 function animate() {
 	//EVERY FRAME WE UPDATE THE POSITION OF OUR meshes.default, meshes.copy, meshes.copy2
-	meshes.standard.rotation.x += 0.01
-	meshes.standard.rotation.y += 0.01
-	meshes.default.rotation.x -= 0.01
-	meshes.default.rotation.y -= 0.02
+
 	//RE-START THE LOOP
 	requestAnimationFrame(animate)
 
