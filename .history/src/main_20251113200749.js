@@ -5,7 +5,6 @@ import * as THREE from 'three'
 import { addDefaultMeshes, addStandardMesh } from './addDefaultMeshes'
 import { addLight } from './addLight'
 import Model from './model'
-import { manager } from './manager'
 
 //SET UP OUR ESSENTIALS SCENE, CAMERA, RENDERER
 const scene = new THREE.Scene()
@@ -28,7 +27,6 @@ const lights = {}
 const mixers = []
 
 const clock = new THREE.Clock()
-const loadingManager = manager()
 
 //CALL OUR INIT FUNCTION, OUR SETUP BASICALLY
 init()
@@ -69,7 +67,6 @@ function instances() {
 		position: new THREE.Vector3(0, -0.8, 3),
 		replace: true,
 		replaceURL: 'gold.png',
-		manager: loadingManager,
 	})
 	flower.init()
 }
@@ -81,9 +78,7 @@ function animate() {
 		mixer.update(delta)
 	}
 
-	if (meshes.flower) {
-		meshes.flower.rotation.y -= 0.01
-	}
+	meshes.flower.rotation.y -= 0.01
 
 	meshes.standard.rotation.x += 0.01
 	meshes.standard.rotation.y += 0.01

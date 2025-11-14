@@ -28,7 +28,6 @@ const lights = {}
 const mixers = []
 
 const clock = new THREE.Clock()
-const loadingManager = manager()
 
 //CALL OUR INIT FUNCTION, OUR SETUP BASICALLY
 init()
@@ -69,7 +68,6 @@ function instances() {
 		position: new THREE.Vector3(0, -0.8, 3),
 		replace: true,
 		replaceURL: 'gold.png',
-		manager: loadingManager,
 	})
 	flower.init()
 }

@@ -69,7 +69,6 @@ function instances() {
 		position: new THREE.Vector3(0, -0.8, 3),
 		replace: true,
 		replaceURL: 'gold.png',
-		manager: loadingManager,
 	})
 	flower.init()
 }
