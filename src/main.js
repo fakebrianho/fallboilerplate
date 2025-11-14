@@ -4,6 +4,7 @@ import * as THREE from 'three'
 //IMPORT OUR ADD DEFAULT MESHES FUNCTION FROM OUR EXTERNAL JS FILE
 import { addDefaultMeshes, addStandardMesh } from './addDefaultMeshes'
 import { addLight } from './addLight'
+import Model from './model'
 
 //SET UP OUR ESSENTIALS SCENE, CAMERA, RENDERER
 const scene = new THREE.Scene()
@@ -23,6 +24,7 @@ camera.position.set(0, 0, 5)
 //CREATE A GLOBALLY ACCESSIBLE OBJECT TO HOLD ONTO ALL OF OUR MESHES
 const meshes = {}
 const lights = {}
+const mixers = []
 
 const clock = new THREE.Clock()
 
@@ -49,11 +51,31 @@ function init() {
 	scene.add(lights.default)
 
 	//START OUR ANIMATION LOOP
+	instances()
 	animate()
+}
+
+function instances() {
+	const flower = new Model({
+		name: 'flower',
+		url: 'flowers.glb',
+		scene: scene,
+		meshes: meshes,
+		animationState: true,
+		mixers: mixers,
+		scale: new THREE.Vector3(2, 2, 2),
+		position: new THREE.Vector3(0, -0.8, 3),
+	})
+	flower.init()
 }
 
 function animate() {
 	//EVERY FRAME WE UPDATE THE POSITION OF OUR meshes.default, meshes.copy, meshes.copy2
+	const delta = clock.getDelta()
+	for (const mixer of mixers) {
+		mixer.update(delta)
+	}
+
 	meshes.standard.rotation.x += 0.01
 	meshes.standard.rotation.y += 0.01
 	meshes.default.rotation.x -= 0.01
